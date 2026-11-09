@@ -115,7 +115,7 @@ if (isset($_POST['submit'])) {
                             <div class="card h-100 card-paket shadow-sm text-center">
                                 <div class="card-body p-4">
                                     <div class="fs-1 text-primary mb-3"><i class="bi bi-wind"></i></div>
-                                    <h3 class="card-title h4 fw-bold"><?= $product['name']; ?></h3>
+                                    <h3 class="card-title h4 fw-bold"><?= $product['title']; ?></h3>
                                     <p class="card-text text-muted">Hanya dicuci dan dikeringkan (belum disetrika).</p>
                                     <h4 class="text-primary fw-bold mb-4">Rp. <?= number_format($product['price'], 0, ',', '.'); ?></h4>
                                     <button class="btn btn-outline-primary w-100 btn-pilih-paket" data-paket="<?= $product['id_products']; ?>">Pilih Paket</button>

@@ -32,12 +32,13 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
     // set header kolom (disesuaikan denngan data orderlaundry )
     $sheet->setCellValue('A1', 'No');
-    $sheet->setCellValue('B1', 'Produk');
-    $sheet->setCellValue('C1', 'Metode Pembayaran');
-    $sheet->setCellValue('D1', 'Status bayar');
-    $sheet->setCellValue('E1', 'qty');
-    $sheet->setCellValue('F1', 'Total');
-    $sheet->setCellValue('G1', 'Tanggal');
+    $sheet->setCellValue('B1', 'name');
+    $sheet->setCellValue('C1', 'Produk');
+    $sheet->setCellValue('D1', 'Metode Pembayaran');
+    $sheet->setCellValue('E1', 'Status bayar');
+    $sheet->setCellValue('F1', 'qty');
+    $sheet->setCellValue('G1', 'Total');
+    $sheet->setCellValue('H1', 'Tanggal');
 
     //ambil dari database
     $orders = select("SELECT * FROM orders JOIN products ON orders.product_id = products.id_products WHERE orders.created_at BETWEEN '$start_date' AND '$end_date'");
@@ -47,12 +48,13 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
     $no = 1;
     foreach ($orders as $order) {
         $sheet ->setCellValue('A' . $rowNum, $no++);
-        $sheet ->setCellValue('B' . $rowNum, $order['title']);
-        $sheet ->setCellValue('C' . $rowNum, $order['payment_method']);
-        $sheet ->setCellValue('D' . $rowNum, $order['is_pay']);
-        $sheet ->setCellValue('E' . $rowNum, $order['qty']);
-        $sheet ->setCellValue('F' . $rowNum, $order['total']);
-        $sheet ->setCellValue('G' . $rowNum, $order['created_at']);
+        $sheet ->setCellValue('B' . $rowNum, $order['name']);
+        $sheet ->setCellValue('C' . $rowNum, $order['title']);
+        $sheet ->setCellValue('D' . $rowNum, $order['payment_method']);
+        $sheet ->setCellValue('E' . $rowNum, $order['is_pay']);
+        $sheet ->setCellValue('F' . $rowNum, $order['qty']);
+        $sheet ->setCellValue('G' . $rowNum, $order['total']);
+        $sheet ->setCellValue('H' . $rowNum, $order['created_at']);
         $rowNum++;
     }
 

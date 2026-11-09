@@ -18,8 +18,9 @@ require_once 'layout/header.php';
 
 $id_orders = (int)$_GET['id_orders'];
 
-//JOIN = mengambungkan 2 table = 1 - 1 OK
-$orders = select("SELECT * FROM products JOIN orders ON products.id_products = orders.product_id  WHERE orders.id_orders = $id_orders")[0];
+// Ganti JOIN menjadi LEFT JOIN agar data tetap muncul meskipun product_id bernilai 0
+$orders = select("SELECT * FROM orders LEFT JOIN products ON products.id_products = orders.product_id WHERE orders.id_orders = $id_orders")[0];
+
 
 ?>
 

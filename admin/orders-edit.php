@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 // membatasi halaman login
 if (!isset($_SESSION['login'])) {
@@ -8,15 +7,17 @@ if (!isset($_SESSION['login'])) {
     <script>
     alert('login sebelum masuk ya');
     document.location.href = 'login.php';
-    
     </script>";
     exit;
 }
+
+
 
 $title = 'orders Edit'; // variable title untuk judul halaman
 require_once 'layout/header.php';
 
 $id_orders = (int)$_GET['id_orders'];
+
 $orders = select("SELECT * FROM orders WHERE id_orders = $id_orders")[0];
 
 $products = select("SELECT * FROM products WHERE status = '1' ORDER BY created_at DESC");
@@ -115,8 +116,6 @@ if (isset($_POST['submit'])) {
 
                 <button type="reset" name="reset" class="btn btn-warning">reset</button>
             </div>
-
-
         </form>
     </div>
 </main>

@@ -7,7 +7,6 @@ if (!isset($_SESSION['login'])) {
     <script>
     alert('login sebelum masuk ya');
     document.location.href = 'login.php';
-    
     </script>";
     exit;
 }
@@ -27,7 +26,7 @@ if (isset($_POST['submit'])) {
                     ";
     } else {
         echo "
-        <script>
+                    <script>
                     alert('order created failed');
                     document.location.href =  'orders.php';
                        </script>";

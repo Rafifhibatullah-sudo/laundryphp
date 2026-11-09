@@ -16,25 +16,24 @@ function createOrder(array $data)
 {
     global $conn;
 
-    //ambil data dari form
-    $name     = strip_tags($data['name']);
-    $phone     = strip_tags($data['phone']);
-    $address            = strip_tags($data['address']);
+    // Ambil data dari form
+    $name           = strip_tags($data['name']);
     $product_id     = strip_tags($data['product_id']);
+    $phone          = strip_tags($data['phone']);
+    $address        = strip_tags($data['address']);
     $payment_method = strip_tags($data['payment_method']);
     $is_pay         = strip_tags($data['is_pay']);
     $qty            = strip_tags($data['qty']);
 
-
     $total = countTotal($data);
 
-    $query = "INSERT INTO orders (name, phone, address, product_id, payment_method, is_pay, qty,  total) VALUES ('$name', '$phone', '$product_id', '$payment_method', '$is_pay', '$qty', '$address', $total)";
+    // KODE YANG SUDAH DIPERBAIKI (Urutan kolom & VALUES sudah disamakan):
+    $query = "INSERT INTO orders (product_id, name, phone, address, payment_method, is_pay, qty, total) VALUES ('$product_id', '$name', '$phone', '$address', '$payment_method', '$is_pay', '$qty', '$total')";
 
     mysqli_query($conn, $query);
 
-    return mysqli_affected_rows($conn); //mengecheck apakah ada baris terpengaruh
+    return mysqli_affected_rows($conn); 
 }
-
 function deleteOrder(int $id_orders)
 {
     global $conn;
